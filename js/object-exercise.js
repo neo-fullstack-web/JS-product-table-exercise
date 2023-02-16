@@ -73,14 +73,14 @@ function renderizarTabla() {
 
         let imageSrc = producto.image ? producto.image : '/assets/images/no-product.png';
         //4- Introducir dentro del tbody una fila por producto con sus respectivas celdas
-        const tableRow = `<tr>
-                                <td><img src="${imageSrc}" width="120" alt="${producto.name}"></td>
-                                <td>${producto.name}</td>
-                                <td>${producto.description}</td>
-                                <td>$ ${producto.price}</td>
-                                <td>📦🎮</td>
-                                <td>🟥✏️⭐</td>
-                            </tr>`
+        const tableRow = `<tr class="product">
+                            <td class="product__img-cell"><img class="product__img" src="${imageSrc}" width="120" alt="${producto.name}"></td>
+                            <td class="product__name">${producto.name}</td>
+                            <td class="product__desc">${producto.description}</td>
+                            <td class="product__price">$ ${producto.price}</td>
+                            <td class="product__others">📦🎮</td>
+                            <td class="product__actions">🟥✏️⭐</td>
+                        </tr>`
         tableBody.innerHTML += tableRow;
     });
 
