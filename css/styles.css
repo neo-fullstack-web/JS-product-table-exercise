@@ -1,0 +1,15 @@
+.table-product {
+    border-collapse: collapse;
+}
+
+.table-product thead tr {
+    background-color: dodgerblue;
+    color: white;
+    
+}
+.table-product th, .table-product td {
+    border: 1px solid skyblue;
+}
+.table-product tr th {
+    padding: 1rem 2rem;
+}
