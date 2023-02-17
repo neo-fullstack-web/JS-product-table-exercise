@@ -1,4 +1,4 @@
-const Products = [
+let Products = [
     {
         name: 'PS5',
         description: 'La consola más potente de Sony al día de la fecha',
@@ -53,7 +53,7 @@ const Products = [
         price: 60000,
         stock: true,
         image: 'https://http2.mlstatic.com/D_NQ_NP_686099-MLA32731207921_112019-O.webp',
-    }
+    },
 ];
 
 //1- Obtener el body de la tabla para poder modificarlo desde JS
@@ -74,7 +74,7 @@ function renderizarTabla() {
         let imageSrc = producto.image ? producto.image : '/assets/images/no-product.png';
         //4- Introducir dentro del tbody una fila por producto con sus respectivas celdas
         const tableRow = `<tr class="product">
-                            <td class="product__img-cell"><img class="product__img" src="${imageSrc}" width="120" alt="${producto.name}"></td>
+                            <td class="product__img-cell"><img class="product__img" src="${imageSrc}" alt="${producto.name}"></td>
                             <td class="product__name">${producto.name}</td>
                             <td class="product__desc">${producto.description}</td>
                             <td class="product__price">$ ${producto.price}</td>
@@ -87,6 +87,52 @@ function renderizarTabla() {
 }
 
 renderizarTabla();
+
+function addProduct(evt) {
+    evt.preventDefault();
+    console.dir(evt.target);
+    const elements = evt.target.elements;
+
+    // console.log(elements.stock.checked)
+    // console.dir(elements.name);
+    // console.dir(elements.price);
+    
+    const newProduct = {
+        name: elements.name.value,
+        description: elements.description.value,
+        price: elements.price.valueAsNumber,
+        image: elements.image.value,
+        stock: elements.stock.checked,
+        joystick: elements.joystick.checked,
+        games: elements.games.value
+    };
+
+
+    const newFormData = new FormData(evt.target);
+    const newProductFormData = Object.fromEntries(newFormData);
+    newProductFormData.stock = newProductFormData.stock === "on" ? true : false;
+    newProductFormData.joystick = newProductFormData.joystick === "on" ? true : false;
+    newProductFormData.price = +newProductFormData.price
+
+
+
+
+
+    console.log(newProductFormData);
+
+    Products.push(newProductFormData);
+
+    // console.log(Products)
+
+    renderizarTabla();
+
+    evt.target.reset()
+    elements.name.focus();
+
+
+}
+
+
 
 
 // product
