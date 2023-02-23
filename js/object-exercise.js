@@ -56,6 +56,7 @@ let Products = [
     },
 ];
 
+
 //1- Obtener el body de la tabla para poder modificarlo desde JS
 const tableBody = document.querySelector('#table-body');
 
@@ -78,8 +79,26 @@ function renderizarTabla() {
                             <td class="product__name">${producto.name}</td>
                             <td class="product__desc">${producto.description}</td>
                             <td class="product__price">$ ${producto.price}</td>
-                            <td class="product__others">📦🎮</td>
-                            <td class="product__actions">🟥✏️⭐</td>
+                            <td class="product__others">
+                                
+                                <i class="fa-solid fa-box"></i>
+                                
+                                🎮
+                            </td>
+                            <td class="product__actions">
+                                <button class="product__action-btn">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                           
+                                <button class="product__action-btn btn-edit">
+                                    <i class="fa-solid fa-pencil"></i>
+                                </button>
+
+                                <button class="product__action-btn btn-favorite">
+                                    <i class="fa-regular fa-star"></i>
+                                </button>
+                            
+                            </td>
                         </tr>`
         tableBody.innerHTML += tableRow;
     });
