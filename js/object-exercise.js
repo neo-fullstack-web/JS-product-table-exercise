@@ -65,7 +65,7 @@ const tableBody = document.querySelector('#table-body');
 function renderizarTabla() {
     tableBody.innerHTML = '';
     //3- Iterar el array para acceder a cada producto
-    Products.forEach((producto) => {
+    Products.forEach((producto, index) => {
         // let imageSrc = '/assets/images/no-product.png';
 
         // if(producto.image) {
@@ -79,14 +79,21 @@ function renderizarTabla() {
                             <td class="product__name">${producto.name}</td>
                             <td class="product__desc">${producto.description}</td>
                             <td class="product__price">$ ${producto.price}</td>
-                            <td class="product__others">
-                                
-                                <i class="fa-solid fa-box"></i>
-                                
-                                🎮
+                            <td class="product__info">
+                                <span 
+                                    class="
+                                            product__info-icon 
+                                            ${ producto.stock ? '' : 'disabled' }
+                                    "
+                                >
+                                    📦
+                                </span>
+                                <span class="product__info-icon  ${ producto.jostick ? '' : 'disabled' }">
+                                    🎮
+                                </span>
                             </td>
                             <td class="product__actions">
-                                <button class="product__action-btn">
+                                <button class="product__action-btn" onclick="deleteProduct(${index})">
                                     <i class="fa-solid fa-trash"></i>
                                 </button>
                            
@@ -101,6 +108,7 @@ function renderizarTabla() {
                             </td>
                         </tr>`
         tableBody.innerHTML += tableRow;
+
     });
 
 }
@@ -148,6 +156,14 @@ function addProduct(evt) {
     evt.target.reset()
     elements.name.focus();
 
+
+}
+
+function deleteProduct(indice) {
+
+    Products.splice(indice, 1);
+
+    renderizarTabla();
 
 }
 
